@@ -1,7 +1,7 @@
 import Head from 'next/head';
-import {useRouter, withRouter} from 'next/router';
+import { useRouter, withRouter } from 'next/router';
 
-function ActiveLink({children, href}) {
+function ActiveLink({ children, href }) {
   const router = useRouter()
   const style = {
     marginRight: 10,
@@ -14,9 +14,9 @@ function ActiveLink({children, href}) {
   }
 }
 
-const UserDetail = ({router}) => {
+const UserDetail = ({ router }) => {
   console.log(router);
-  
+
   return (
     <>
       <Head>
