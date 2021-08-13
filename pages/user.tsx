@@ -1,20 +1,40 @@
-import React, { useState } from 'react';
-import Head from 'next/head';
+import React, { useEffect, useMemo, useState } from 'react';
 
 export default function User() {
+  useMemo(() => {
+    console.log('constructor');
+
+  }, [])
   const [counter, setCounter] = useState(0);
   const [visible, setVisible] = useState(true);
-  // const [state, setState] = useState({
-  //   counter: 0,
-  //   visible: true
-  // });
+  const [user, setUser] = useState({
+    firstName: 'john',
+    lastName: 'smith',
+  });
+
+  useEffect(() => {
+    console.log('useEffect run');
+  }, [])
+
+  const fullName = useMemo(() => {
+    return user.firstName + ' ' + user.lastName;
+  }, [user])
+
   return (
     <>
-      <h1>Hello User</h1>
+      <h1>Hello User {fullName}</h1>
+      <button onClick={() => {
+        setVisible(!visible);
+      }}>Toggle visible</button>
       <button onClick={() => {
         setCounter(counter + 1);
       }}>Counter add</button>
-      <p>{counter}</p>
+      {visible && (
+        <>
+          <p>{counter}</p>
+        </>
+      )}
+
     </>
   )
 }
