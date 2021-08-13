@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import useConstructor from '../components/useConstructor';
 
-export default function User() {
+export default function PlayGround() {
   useConstructor(() => {
     console.log('constructor');
   });
