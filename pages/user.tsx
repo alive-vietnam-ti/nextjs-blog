@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
 export default function User() {
   useMemo(() => {
@@ -20,15 +20,19 @@ export default function User() {
     return user.firstName + ' ' + user.lastName;
   }, [user])
 
+  const handleCreateCounter = useCallback(() => {
+    setCounter(counter + 1)
+  }, [counter]);
+
+  const handleVisible = useCallback(() => {
+    setVisible(!visible)
+  }, [visible])
+
   return (
     <>
       <h1>Hello User {fullName}</h1>
-      <button onClick={() => {
-        setVisible(!visible);
-      }}>Toggle visible</button>
-      <button onClick={() => {
-        setCounter(counter + 1);
-      }}>Counter add</button>
+      <button onClick={handleVisible}>Toggle visible</button>
+      <button onClick={handleCreateCounter}>Counter add</button>
       {visible && (
         <>
           <p>{counter}</p>
