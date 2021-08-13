@@ -1,20 +1,16 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import useConstructor from '../components/useConstructor';
 
 export default function User() {
-  useMemo(() => {
+  useConstructor(() => {
     console.log('constructor');
-
-  }, [])
+  });
   const [counter, setCounter] = useState(0);
   const [visible, setVisible] = useState(true);
   const [user, setUser] = useState({
     firstName: 'john',
     lastName: 'smith',
   });
-
-  useEffect(() => {
-    console.log('useEffect run');
-  }, [])
 
   const fullName = useMemo(() => {
     return user.firstName + ' ' + user.lastName;
@@ -34,7 +30,6 @@ export default function User() {
   const fileEl = useRef(null);
   const handleUploadImage = (() => {
     fileEl.current.click()
-
   })
 
   return (
